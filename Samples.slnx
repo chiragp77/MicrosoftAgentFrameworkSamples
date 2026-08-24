@@ -76,10 +76,6 @@
     <Project Path="src/AzureAiFoundry.NewNovember2025NuGet/AzureAiFoundry.NewNovember2025NuGet.csproj" Id="1756c13a-a00a-4ca0-81a9-e1cfe15c578e" />
     <Project Path="src/AzureAiFoundry.WebSearch/AzureAiFoundry.WebSearch.csproj" Id="70bb89f4-0795-4b8e-ad3f-858f035901b3" />
   </Folder>
-  <Folder Name="/Multi Agent Scenarios/">
-    <Project Path="src/MultiAgent.AgentAsTool/MultiAgent.AgentAsTool.csproj" Id="41434d93-72ba-43d0-b7b0-117e3c6eb7bb" />
-    <Project Path="src/MultiAgent.ManualViaStructuredOutput/MultiAgent.ManualViaStructuredOutput.csproj" Id="84bbb296-1bd5-4e35-86dd-bf12dce7b418" />
-  </Folder>
   <Folder Name="/OpenAi ResponesApi/">
     <File Path="ResponsesAPIFeatureMatrixSupport.png" />
     <Project Path="src/AllowBackgroundResponses/AllowBackgroundResponses.csproj" Id="816a1755-2efb-42d2-af96-408282ee50ea" />
@@ -102,12 +98,12 @@
     <Project Path="src/TheDifferentAgents/TheDifferentAgents.csproj" Id="443e0db8-204b-403d-8145-7133496bf9c8" />
     <Project Path="src/TimeToSwitchToTheResponsesAPI/TimeToSwitchToTheResponsesAPI.csproj" Id="600a03fd-5a55-48a4-8326-c26215cb31c5" />
     <Project Path="src/ToolsVsMcpVsSkillsVsAIContextProviders/ToolsVsMcpVsSkillsVsAIContextProviders.csproj" Id="02549cd1-9d39-4822-8da1-a42e9575ee88" />
-    <Project Path="src/WhyIDontUseWorkflows/WhyIDontUseWorkflows.csproj" Id="caac6d90-94bb-43e0-bd61-9b09f7a8bfbf" />
   </Folder>
   <Folder Name="/RAG/">
     <Project Path="src/AdvancedRAGTechniques/AdvancedRAGTechniques.csproj" Id="222d4527-f7ca-4e02-a3ef-2f65d7f5014a" />
     <Project Path="src/BuildYouOwnVectorStore/BuildYourOwnVectorStore.csproj" Id="5a1aeba5-405a-421a-9005-4d5592034d0d" />
     <Project Path="src/CommunityToolkit.VectorData/CommunityToolkit.VectorData.csproj" Id="e45106b6-48bc-4a50-a93a-d5d4ae370993" />
+    <Project Path="src/HowToDoVectorStoreDeltaUpdates/HowToDoVectorStoreDeltaUpdates.csproj" Id="e6b4bbb1-72a9-4fd6-ab13-652dd3970a2a" />
     <Project Path="src/UsingRAGInAgentFramework/UsingRAGInAgentFramework.csproj" Id="11bf0b5c-8a06-4a3f-b70c-148730d2db08" />
   </Folder>
   <Folder Name="/Semantic Kernel to Agent Framework Migration/">
@@ -162,14 +158,21 @@
     <Project Path="src/McpAuthApiKey/McpAuthApiKey.csproj" Id="df5f2528-37c9-4c38-a093-6b28973cf707" />
     <Project Path="src/McpServerWithOAuth/McpServerWithOAuth.csproj" />
   </Folder>
-  <Folder Name="/Workflows/">
-    <Project Path="src/Workflow.AiAssisted.PizzaSample/Workflow.AiAssisted.PizzaSample.csproj" Id="ebb01b83-7e68-44be-a89a-4574848c00fa" />
-    <Project Path="src/Workflow.HumanInTheLoop/Workflow.HumanInTheLoop.csproj" Id="2e1ded61-ded9-4803-8cd2-0196030bd3a0" />
+  <Folder Name="/Workflows &amp; Multi-Agents/">
+    <Project Path="src/WhyIDontUseWorkflows/WhyIDontUseWorkflows.csproj" Id="caac6d90-94bb-43e0-bd61-9b09f7a8bfbf" />
   </Folder>
-  <Folder Name="/Workflows/Agentic Workflows/">
+  <Folder Name="/Workflows &amp; Multi-Agents/Agentic Workflows/">
     <Project Path="src/Workflow.Concurrent/Workflow.Concurrent.csproj" Id="b22a0c06-ddd2-4615-9335-84dfbecfd961" />
     <Project Path="src/Workflow.Handoff/Workflow.Handoff.csproj" Id="b19de8e1-2119-403c-8f12-8a61c5b77e33" />
+    <Project Path="src/Workflow.HumanInTheLoop/Workflow.HumanInTheLoop.csproj" Id="2e1ded61-ded9-4803-8cd2-0196030bd3a0" />
     <Project Path="src/Workflow.Sequential/Workflow.Sequential.csproj" Id="1bcdb486-2870-4739-8a35-d01c80b167e9" />
+  </Folder>
+  <Folder Name="/Workflows &amp; Multi-Agents/HandWritten/">
+    <Project Path="src/Workflow.AiAssisted.PizzaSample/Workflow.AiAssisted.PizzaSample.csproj" Id="ebb01b83-7e68-44be-a89a-4574848c00fa" />
+  </Folder>
+  <Folder Name="/Workflows &amp; Multi-Agents/Multi Agent Scenarios/">
+    <Project Path="src/MultiAgent.AgentAsTool/MultiAgent.AgentAsTool.csproj" Id="41434d93-72ba-43d0-b7b0-117e3c6eb7bb" />
+    <Project Path="src/MultiAgent.ManualViaStructuredOutput/MultiAgent.ManualViaStructuredOutput.csproj" Id="84bbb296-1bd5-4e35-86dd-bf12dce7b418" />
   </Folder>
   <Folder Name="/ZeroToFirstAgent/" />
   <Folder Name="/ZeroToFirstAgent/Non-OpenAI Based/">
