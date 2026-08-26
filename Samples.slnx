@@ -26,6 +26,7 @@
   </Folder>
   <Folder Name="/AIContextProvider/">
     <Project Path="src/AIContextProvider.AgentSkills/AIContextProvider.AgentSkills.csproj" Id="5c882c83-ff67-47a1-aa37-5d393fe05324" />
+    <Project Path="src/AIContextProvider.Mem0/AIContextProvider.Mem0.csproj" Id="c2c3258b-e4a8-4fcb-aaf5-1e1d9c37567d" />
     <Project Path="src/AIContextProviderFactory/AIContextProvider.Memory.csproj" Id="5100b6b0-ce98-4a6a-bdc9-3541771b28f1" />
     <Project Path="src/AIContextProviders/AIContextProviders.DeepDive.csproj" Id="11ef1ae1-2a32-4e60-830c-ba6bba9db460" />
     <Project Path="src/ToolCalling.OnTheFlyToolCallInjection/ToolCalling.OnTheFlyToolCallInjection.csproj" Id="6143c203-a20e-4034-a76a-9d3cc82a5075" />

@@ -58,7 +58,8 @@ public class SecretsManager
             configurationRoot["AnthropicApiKey"] ?? string.Empty,
             configurationRoot["MistralApiKey"] ?? string.Empty,
             configurationRoot["AmazonBedrockApiKey"] ?? string.Empty,
-            configurationRoot["OpenWeatherApiKey"] ?? string.Empty);
+            configurationRoot["OpenWeatherApiKey"] ?? string.Empty,
+            configurationRoot["Mem0ApiKey"] ?? string.Empty);
     }
 
     public static (Uri endpoint, ApiKeyCredential apiKey) GetAzureOpenAICredentials(bool newUriFormat)

@@ -27,6 +27,7 @@
     <PackageVersion Include="Google.GenAI" Version="1.18.0" />
     <PackageVersion Include="Hyperlight.HyperlightSandbox.Guest.Python" Version="0.4.0" />
     <PackageVersion Include="JetBrains.Annotations" Version="2026.2.0" />
+    <PackageVersion Include="Mem0" Version="1.0.0" />
     <PackageVersion Include="Microsoft.Agents.AI" Version="1.19.0" />
     <PackageVersion Include="Microsoft.Agents.AI.A2A" Version="1.19.0-preview.260822.1" />
     <PackageVersion Include="Microsoft.Agents.AI.AGUI" Version="1.13.0-preview.260703.1" />
