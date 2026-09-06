@@ -11,7 +11,7 @@ Console.Clear();
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AIProjectClient client = new Azure.AI.Projects.AIProjectClient(new Uri(secrets.AzureAiFoundryAgentEndpoint), new AzureCliCredential());
+AIProjectClient client = new Azure.AI.Projects.AIProjectClient(new Uri(secrets.MicrosoftFoundryEndpoint), new AzureCliCredential());
 
 string? foundryAgentName = null;
 try

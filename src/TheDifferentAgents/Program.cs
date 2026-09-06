@@ -24,7 +24,7 @@ AzureOpenAIClient rawAzureOpenAiClient = new(new Uri(secrets.AzureOpenAiEndpoint
 //--------------------------------------------------------------------------
 
 //Azure AI Foundry's PersistentAgentsClient is unique to that service
-PersistentAgentsClient persistentAgentsClient = new(secrets.AzureAiFoundryAgentEndpoint, new AzureCliCredential());
+PersistentAgentsClient persistentAgentsClient = new(secrets.MicrosoftFoundryEndpoint, new AzureCliCredential());
 
 //--------------------------------------------------------------------------
 

@@ -82,6 +82,7 @@
     <Project Path="src/AllowBackgroundResponses/AllowBackgroundResponses.csproj" Id="816a1755-2efb-42d2-af96-408282ee50ea" />
     <Project Path="src/OpenAIResponsesApi.CodeInterpreter/OpenAIResponsesApi.CodeInterpreter.csproj" Id="1d0ae3d5-3cb0-439c-acf2-311d15621421" />
     <Project Path="src/OpenAIResponsesApi.FileSearchTool/OpenAIResponsesApi.FileSearchTool.csproj" Id="959e5bb4-a8d6-4530-a893-b2430c51b921" />
+    <Project Path="src/OpenAIResponsesApi.ImageGeneration/OpenAIResponsesApi.ImageGeneration.csproj" Id="08aca236-96be-42ec-98e0-579e7ac3e5bf" />
     <Project Path="src/OpenAIResponsesApi.ReasoningSummary/OpenAIResponsesApi.ReasoningSummary.csproj" Id="aa7c1934-b057-43d6-ba0a-92375c4e47f4" />
     <Project Path="src/OpenAIResponsesApi.ResumeConversation/OpenAIResponsesApi.ResumeConversation.csproj" Id="109fe4ed-2aaf-4373-b93b-b5a72fedc742" />
     <Project Path="src/OpenAIResponsesApi.SpecialModels/OpenAIResponsesApi.SpecialModels.csproj" Id="34ae1899-0fb6-41ca-85e4-e13d85196263" />

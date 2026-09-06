@@ -36,7 +36,7 @@ async Task CreateAndCallNormalClientAgent(string model, string question)
 
 async Task CreateAndCallFoundryAgent(string model, string question)
 {
-    PersistentAgentsClient client = new(secrets.AzureAiFoundryAgentEndpoint, new AzureCliCredential());
+    PersistentAgentsClient client = new(secrets.MicrosoftFoundryEndpoint, new AzureCliCredential());
     string? agentIdToDelete = null;
     try
     {

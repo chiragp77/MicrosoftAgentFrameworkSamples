@@ -11,7 +11,7 @@ using Shared.Extensions;
 Console.Clear();
 
 Secrets secrets = SecretsManager.GetSecrets();
-PersistentAgentsClient client = new(secrets.AzureAiFoundryAgentEndpoint, new AzureCliCredential());
+PersistentAgentsClient client = new(secrets.MicrosoftFoundryEndpoint, new AzureCliCredential());
 
 BingGroundingSearchConfiguration bingToolConfiguration = new(secrets.BingApiKey);
 BingGroundingSearchToolParameters bingToolParameters = new([bingToolConfiguration]);

@@ -4,7 +4,7 @@ public record Secrets(
     string OpenAiApiKey,
     string AzureOpenAiEndpoint,
     string AzureOpenAiKey,
-    string AzureAiFoundryAgentEndpoint,
+    string MicrosoftFoundryEndpoint,
     string AzureAiFoundryAgentId,
     string BingApiKey,
     string GitHubPatToken,

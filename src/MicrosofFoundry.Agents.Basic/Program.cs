@@ -15,7 +15,7 @@ Console.Clear();
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AIProjectClient client = new AIProjectClient(new Uri(secrets.AzureAiFoundryAgentEndpoint), new AzureCliCredential());
+AIProjectClient client = new AIProjectClient(new Uri(secrets.MicrosoftFoundryEndpoint), new AzureCliCredential());
 
 string modelDeploymentName = "gpt-4.1-mini";
 string myAgentName = "myAgent4";
