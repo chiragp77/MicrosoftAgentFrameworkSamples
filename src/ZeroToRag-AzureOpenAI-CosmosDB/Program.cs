@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using CommunityToolkit.VectorData.InMemory;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using CommunityToolkit.VectorData.CosmosNoSql;
 using Microsoft.Azure.Cosmos;
+using OpenAI;
 
 #pragma warning disable OPENAI001
 
@@ -49,7 +50,10 @@ string cosmosDbConnectionString = "";
 
 #region Step 4: Create you Embedding Generator
 
-AzureOpenAIClient client = new AzureOpenAIClient(new Uri(azureEndpoint), new ApiKeyCredential(azureApiKey));
+OpenAIClient client = new OpenAIClient(new ApiKeyCredential(azureApiKey), new OpenAIClientOptions
+{
+    Endpoint = new Uri($"{azureEndpoint.TrimEnd('/')}/openai/v1/"),
+});
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = client
     .GetEmbeddingClient(embeddingModelDeploymentName)
     .AsIEmbeddingGenerator();

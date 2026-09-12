@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -14,11 +14,11 @@ namespace The_Trello_Experiment;
 
 public static class Take3TheSensibleChoice
 {
-    public static async Task Run(AzureOpenAIClient azureOpenAIClient, string trelloApiKey, string trelloToken)
+    public static async Task Run(OpenAIClient OpenAIClient, string trelloApiKey, string trelloToken)
     {
         TrelloTools trelloTools = new(new TrelloClient(trelloApiKey, trelloToken));
 
-        AIAgent agent = azureOpenAIClient
+        AIAgent agent = OpenAIClient
             .GetResponsesClient()
             .AsAIAgent(
                 model: "gpt-4.1-mini",

@@ -1,6 +1,6 @@
 ﻿using AdvancedRAGTechniques.EmbeddingOptions;
 using AdvancedRAGTechniques.SearchOptions;
-using Azure.AI.OpenAI;
+
 using CommunityToolkit.VectorData.SqlServer;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
@@ -15,7 +15,7 @@ namespace AdvancedRAGTechniques;
 
 public static class Option1RephraseQuestion
 {
-    public static async Task Run(bool importData, Movie[] movieDataForRag, ChatMessage question, AzureOpenAIClient client, SqlServerCollection<Guid, MovieVectorStoreRecord> collection)
+    public static async Task Run(bool importData, Movie[] movieDataForRag, ChatMessage question, OpenAIClient client, SqlServerCollection<Guid, MovieVectorStoreRecord> collection)
     {
         if (importData)
         {

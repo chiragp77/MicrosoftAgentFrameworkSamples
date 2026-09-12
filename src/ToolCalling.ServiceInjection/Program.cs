@@ -1,5 +1,5 @@
 ﻿using System.ClientModel;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,11 +8,8 @@ using OpenAI.Chat;
 using Shared;
 
 Console.Clear();
-Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient azureOpenAIClient = new AzureOpenAIClient(
-    new Uri(secrets.AzureOpenAiEndpoint),
-    new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ServiceCollection services = new();
 services.AddScoped<HttpClient>();
@@ -25,7 +22,7 @@ ToolClass2 toolClass2Instance = serviceProvider.GetRequiredService<ToolClass2>()
 
 #region Agent Part
 
-ChatClientAgent agent = azureOpenAIClient
+ChatClientAgent agent = client
     .GetChatClient("gpt-4.1")
     .AsAIAgent(
         tools:

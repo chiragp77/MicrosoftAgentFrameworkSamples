@@ -7,7 +7,6 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.AI.OpenAI" />
 		<PackageReference Include="JetBrains.Annotations" />
 		<PackageReference Include="Microsoft.Agents.AI.OpenAI" />
 		<PackageReference Include="AgentFrameworkToolkit.Tools" />

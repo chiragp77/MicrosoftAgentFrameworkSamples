@@ -1,15 +1,16 @@
 using System.Text;
 using AIContextProvider.Mem0.Mem0Provider;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Responses;
 using Shared;
 #pragma warning disable OPENAI001
 
 Utils.Init("Mem0 Provider");
 Secrets secrets = SecretsManager.GetSecrets();
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 using Mem0Client mem0Client = new(secrets.Mem0ApiKey);
 

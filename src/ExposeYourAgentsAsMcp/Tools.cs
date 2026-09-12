@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using ModelContextProtocol.Server;
 using OpenAI;
@@ -8,7 +8,7 @@ using OpenAI.Chat;
 namespace ExposeYourAgentsAsRemoteMcp;
 
 [McpServerToolType]
-public class Tools(AzureOpenAIClient azureOpenAIClient)
+public class Tools(OpenAIClient OpenAIClient)
 {
     [McpServerTool(Name = "get_the_secret_word", ReadOnly = true)]
     [Description("Get the Top Secret Word")]
@@ -21,7 +21,7 @@ public class Tools(AzureOpenAIClient azureOpenAIClient)
     [Description("Ask John the Pirate about everything Pirate life [Kids-friendly]")]
     public async Task<string> AskJohnThePirate(string question)
     {
-        ChatClientAgent agent = azureOpenAIClient
+        ChatClientAgent agent = OpenAIClient
             .GetChatClient("gpt-4.1-mini")
             .AsAIAgent(instructions: "You are John the Pirate, answering children's questions about Pirates");
 

@@ -1,11 +1,12 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hyperlight;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 ChatClient chatClient = client.GetChatClient("gpt-5.4-mini");
 
 await Javascript();

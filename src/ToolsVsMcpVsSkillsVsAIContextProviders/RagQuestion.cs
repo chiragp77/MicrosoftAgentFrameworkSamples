@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
@@ -6,6 +6,7 @@ using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Text;
 using CommunityToolkit.VectorData.InMemory;
+using OpenAI;
 using OpenAI.Responses;
 using Shared;
 #pragma warning disable OPENAI001
@@ -34,10 +35,7 @@ public class RagQuestion
 
         Secrets secrets = SecretsManager.GetSecrets();
 
-        AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey),new AzureOpenAIClientOptions
-        {
-            //Transport = new HttpClientPipelineTransport(httpClient)
-        });
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient(false); //set to true to see raw calls
 
         IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = client
             .GetEmbeddingClient("text-embedding-3-small")

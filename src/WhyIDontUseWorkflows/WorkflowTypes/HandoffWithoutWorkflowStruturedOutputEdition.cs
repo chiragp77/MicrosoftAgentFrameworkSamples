@@ -1,5 +1,6 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 using System.ClientModel;
@@ -10,9 +11,7 @@ public static class HandoffWithoutWorkflowStructuredOutputEdition
 {
     public static async Task Run()
     {
-        Secrets secrets = SecretsManager.GetSecrets();
-
-        AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
         ChatClientAgent intentAgent = client.GetChatClient("gpt-4.1-mini").AsAIAgent(name: "IntentAgent", instructions: "Determine what type of question was asked. Never answer yourself");
 

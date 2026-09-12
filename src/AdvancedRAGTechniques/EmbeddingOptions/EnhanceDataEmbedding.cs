@@ -1,6 +1,7 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using CommunityToolkit.VectorData.SqlServer;
 using Microsoft.Agents.AI;
+using OpenAI;
 using OpenAI.Chat;
 using UsingRAGInAgentFramework.Models;
 
@@ -8,7 +9,7 @@ namespace AdvancedRAGTechniques.EmbeddingOptions;
 
 public static class EnhanceDataEmbedding
 {
-    public static async Task Embed(AzureOpenAIClient client, SqlServerCollection<Guid, MovieVectorStoreRecord> collection, Movie[] movieDataForRag)
+    public static async Task Embed(OpenAIClient client, SqlServerCollection<Guid, MovieVectorStoreRecord> collection, Movie[] movieDataForRag)
     {
         ChatClientAgent genreAgent = client
             .GetChatClient("gpt-4.1") //You might get away with a cheaper model here as task is easy for AI

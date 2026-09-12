@@ -1,7 +1,7 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/AJZhHHnsFXY
 // ReSharper disable UnreachableSwitchCaseDueToIntegerAnalysis
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -13,7 +13,7 @@ using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient azureOpenAiClient = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient azureOpenAiClient = ClientHelper.GetAzureOpenAIClient();
 OpenAIClient openAiClient = new(new ApiKeyCredential(secrets.OpenAiApiKey));
 
 ChatClientAgent azureOpenAiAgent = azureOpenAiClient.GetChatClient("gpt-4.1").AsAIAgent();

@@ -1,6 +1,6 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/jeVQo75KcCw
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using OpenAI;
 using OpenTelemetry;
@@ -24,7 +24,7 @@ if (!string.IsNullOrWhiteSpace(secrets.ApplicationInsightsConnectionString))
 
 using TracerProvider tracerProvider = tracerProviderBuilder.Build();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 AIAgent agent = client
     .GetChatClient("gpt-4.1")

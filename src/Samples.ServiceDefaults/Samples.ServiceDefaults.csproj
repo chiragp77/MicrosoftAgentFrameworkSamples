@@ -17,7 +17,6 @@
     <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" />
-    <PackageReference Include="Azure.AI.OpenAI" />
     <PackageReference Include="Microsoft.Agents.AI.OpenAI" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using NAudio.Wave;
 using OpenAI;
 using OpenAI.Audio;
@@ -9,7 +9,7 @@ Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
 
 //OpenAIClient openAiClient = new OpenAIClient(secrets.OpenAiApiKey);
-AzureOpenAIClient azureOpenAIClient = new AzureOpenAIClient(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient azureOpenAIClient = ClientHelper.GetAzureOpenAIClient();
 
 /* Pricing (as of 1st of December 2025)
  * - gpt-4o-mini-tts    ~0.015 USD / minute

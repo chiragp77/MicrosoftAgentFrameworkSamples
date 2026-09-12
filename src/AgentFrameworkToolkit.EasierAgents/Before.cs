@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI.Chat;
@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
+using OpenAI;
 using ChatResponseFormat = Microsoft.Extensions.AI.ChatResponseFormat;
 
 namespace AgentFrameworkToolkit.EasierAgents;
@@ -18,7 +19,7 @@ public class Before
     public static async Task RunAsync()
     {
         //Weather-Task: With GPT-5-Mini in low Reasoning, Call Tool with middleware and return as structured Output
-        AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
         AIAgent agent = client
             .GetChatClient("gpt-5-mini")

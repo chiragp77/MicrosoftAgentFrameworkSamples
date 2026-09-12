@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Text.Json;
@@ -22,7 +22,7 @@ public static class ClientHelper
         });
     }
 
-    public static OpenAIClient GetOpenAIClientForAzure(bool showRawCall, RawCallOptions? rawCall = null)
+    public static OpenAIClient GetAzureOpenAIClient(bool showRawCall = false, RawCallOptions? rawCall = null)
     {
         (Uri endpoint, ApiKeyCredential apiKey) = SecretsManager.GetAzureOpenAICredentials(true);
         if (!showRawCall)
@@ -38,21 +38,6 @@ public static class ClientHelper
             Endpoint = endpoint,
             Transport = new HttpClientPipelineTransport(new HttpClient(new CustomClientHttpHandler(rawCall ?? new RawCallOptions())))
         });
-    }
-
-    public static AzureOpenAIClient GetAzureOpenAIClient(bool showRawCall = false, RawCallOptions? rawCall = null)
-    {
-        (Uri endpoint, ApiKeyCredential apiKey) = SecretsManager.GetAzureOpenAICredentials(false);
-        if (!showRawCall)
-        {
-            return new AzureOpenAIClient(endpoint, apiKey);
-        }
-
-        return new AzureOpenAIClient(endpoint, apiKey, new AzureOpenAIClientOptions
-        {
-            Transport = new HttpClientPipelineTransport(new HttpClient(new CustomClientHttpHandler(rawCall ?? new RawCallOptions())))
-        });
-
     }
 
     public class RawCallOptions

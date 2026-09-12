@@ -1,4 +1,4 @@
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.AI;
@@ -14,29 +14,25 @@ using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 #pragma warning disable OPENAI001
 #pragma warning disable SKEXP0010
 
-Secrets secrets = Shared.SecretsManager.GetSecrets();
-string endpoint = secrets.AzureOpenAiEndpoint;
-string apiKey = secrets.AzureOpenAiKey;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton(new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(apiKey)));
+builder.Services.AddSingleton(ClientHelper.GetAzureOpenAIClient());
 builder.Services.AddEmbeddingGenerator(provider =>
 {
-    AzureOpenAIClient openAIClient = provider.GetRequiredService<AzureOpenAIClient>();
+    OpenAIClient openAIClient = provider.GetRequiredService<OpenAIClient>();
     return openAIClient.GetEmbeddingClient("text-embedding-3-small").AsIEmbeddingGenerator();
 });
 
 WebApplication app = builder.Build();
 
-app.MapPost("/chat", async Task<IResult> ([FromBody] ChatRequest chatRequest, AzureOpenAIClient client) =>
+app.MapPost("/chat", async Task<IResult> ([FromBody] ChatRequest chatRequest, OpenAIClient client) =>
 {
     ChatClientAgent agent = client.GetChatClient("gpt-4.1-mini").AsAIAgent();
     AgentResponse response = await agent.RunAsync(chatRequest.Question);
     return Results.Ok(new ChatResponse(response.Text));
 });
 
-app.MapPost("/chatWithStreaming", async Task<IResult> ([FromBody] ChatRequest chatRequest, AzureOpenAIClient client) =>
+app.MapPost("/chatWithStreaming", async Task<IResult> ([FromBody] ChatRequest chatRequest, OpenAIClient client) =>
 {
     //Not really streaming, but simulating it
     ChatClientAgent agent = client.GetChatClient("gpt-4.1-mini").AsAIAgent(
@@ -51,7 +47,7 @@ app.MapPost("/chatWithStreaming", async Task<IResult> ([FromBody] ChatRequest ch
     return Results.Ok(new ChatResponse(answer));
 });
 
-app.MapPost("/chatHistory", async Task<IResult> ([FromBody] ChatRequest chatRequest, AzureOpenAIClient client) =>
+app.MapPost("/chatHistory", async Task<IResult> ([FromBody] ChatRequest chatRequest, OpenAIClient client) =>
 {
     ChatClientAgent agent = client.GetChatClient("gpt-4.1-mini").AsAIAgent(
         instructions: "You answer questions about People");
@@ -66,7 +62,7 @@ app.MapPost("/chatHistory", async Task<IResult> ([FromBody] ChatRequest chatRequ
     return Results.Ok(messagesInThread);
 });
 
-app.MapPost("/toolCalling", async Task<IResult> ([FromBody] ChatRequest chatRequest, AzureOpenAIClient client) =>
+app.MapPost("/toolCalling", async Task<IResult> ([FromBody] ChatRequest chatRequest, OpenAIClient client) =>
 {
     MyTools myTools = new();
 
@@ -82,7 +78,7 @@ app.MapPost("/toolCalling", async Task<IResult> ([FromBody] ChatRequest chatRequ
     return Results.Ok(new ChatResponse(response.Text));
 });
 
-app.MapPost("/structuredOutput", async Task<IResult> ([FromBody] ChatRequest chatRequest, AzureOpenAIClient client) =>
+app.MapPost("/structuredOutput", async Task<IResult> ([FromBody] ChatRequest chatRequest, OpenAIClient client) =>
 {
     ChatClientAgent agent = client.GetChatClient("gpt-4.1-mini").AsAIAgent(
         instructions: "You answer Movie Questions"
@@ -91,7 +87,7 @@ app.MapPost("/structuredOutput", async Task<IResult> ([FromBody] ChatRequest cha
     return Results.Ok(response.Result);
 });
 
-app.MapPost("/rag", async Task<IResult> ([FromBody] ChatRequest chatRequest, IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator, AzureOpenAIClient client) =>
+app.MapPost("/rag", async Task<IResult> ([FromBody] ChatRequest chatRequest, IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator, OpenAIClient client) =>
 {
     //RAG Ingest Would normally not happen in the call itself, but done for demo
     List<KnowledgeBaseEntry> knowledgeBase =

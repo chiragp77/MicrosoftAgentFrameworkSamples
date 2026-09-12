@@ -1,11 +1,12 @@
 //YouTube video that cover this sample: https://youtu.be/q-mHdd6iJJo
 
-using Azure.AI.OpenAI;
+
 using DependencyInjection.Components;
-using System.ClientModel;
 using Microsoft.Agents.AI;
 using OpenAI;
 using OpenAI.Chat;
+using Shared;
+using System.ClientModel;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-Shared.Secrets secrets = Shared.SecretsManager.GetSecrets();
-
-AzureOpenAIClient client = new AzureOpenAIClient(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 builder.Services.AddSingleton(client);
 
 ChatClient chatClient = client.GetChatClient("gpt-4.1");

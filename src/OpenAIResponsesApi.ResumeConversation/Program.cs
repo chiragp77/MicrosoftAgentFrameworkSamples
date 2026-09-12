@@ -12,7 +12,7 @@ Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
 
 OpenAIClient client = new(secrets.OpenAiApiKey);
-/*AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));*/
+/*OpenAIClient client = ClientHelper.GetAzureOpenAIClient();*/
 ResponsesClient responseClient = client
     .GetResponsesClient();
 

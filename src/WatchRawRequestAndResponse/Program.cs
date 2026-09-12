@@ -1,6 +1,6 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/Gr3S1Q9eZrc
 
-using Azure.AI.OpenAI;
+
 using OpenAI;
 using Shared;
 using System.ClientModel;
@@ -22,8 +22,9 @@ OpenAIClient client = new(new ApiKeyCredential(secrets.OpenAiApiKey), new OpenAI
 });
 */
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey), new AzureOpenAIClientOptions
+OpenAIClient client = new(new ApiKeyCredential(secrets.AzureOpenAiKey), new OpenAIClientOptions
 {
+    Endpoint = new Uri($"{secrets.AzureOpenAiEndpoint.TrimEnd('/')}/openai/v1/"),
     Transport = new HttpClientPipelineTransport(httpClient)
 });
 

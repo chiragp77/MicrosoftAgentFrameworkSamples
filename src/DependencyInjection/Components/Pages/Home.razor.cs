@@ -1,11 +1,11 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using OpenAI;
 using OpenAI.Chat;
 
 namespace DependencyInjection.Components.Pages;
 
-public partial class Home(AzureOpenAIClient azureOpenAIClient, [FromKeyedServices("gpt-4.1")] ChatClient chatClient, [FromKeyedServices("gpt-4.1")] ChatClientAgent agentInjected)
+public partial class Home(OpenAIClient OpenAIClient, [FromKeyedServices("gpt-4.1")] ChatClient chatClient, [FromKeyedServices("gpt-4.1")] ChatClientAgent agentInjected)
 {
     private string? _question;
     private string? _answer;
@@ -17,7 +17,7 @@ public partial class Home(AzureOpenAIClient azureOpenAIClient, [FromKeyedService
             return;
         }
 
-        ChatClientAgent agent = azureOpenAIClient
+        ChatClientAgent agent = OpenAIClient
             .GetChatClient("gpt-4.1")
             .AsAIAgent();
 

@@ -1,14 +1,15 @@
 ﻿using System.Text;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using Shared;
 using OpenAI.Chat;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 #pragma warning disable MEAI001
 
 Utils.Init("Custom ChatHistory Reducers");
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 //Built-in reducers (covered in previous video)
 IChatReducer messageCountingChatReducer = new MessageCountingChatReducer(5);

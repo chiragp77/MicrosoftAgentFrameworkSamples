@@ -1,10 +1,11 @@
 ﻿using AIAsDataFilter.Models;
-using Azure.AI.OpenAI;
+
 using Shared;
 using System.ClientModel;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Microsoft.Agents.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared.Extensions;
 
@@ -14,9 +15,7 @@ List<Book> books = JsonSerializer.Deserialize<List<Book>>(json)!;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(
-    new Uri(secrets.AzureOpenAiEndpoint), 
-    new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 string model = "gpt-4.1-mini";
 //string model = "gpt-5-mini";

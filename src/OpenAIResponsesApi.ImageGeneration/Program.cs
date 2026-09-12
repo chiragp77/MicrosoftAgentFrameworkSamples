@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -30,15 +30,15 @@ await Execute(openAIClient.GetResponsesClient());
 Utils.Green("Azure OpenAI");
 using HttpClient httpClient = new();
 httpClient.DefaultRequestHeaders.Add("x-ms-oai-image-generation-deployment", imageModel);
-AzureOpenAIClient azureOpenAIClient = new(
-    new Uri(secrets.AzureOpenAiEndpoint),
+OpenAIClient client = new(
     new ApiKeyCredential(secrets.AzureOpenAiKey),
-    new AzureOpenAIClientOptions
+    new OpenAIClientOptions
     {
+        Endpoint = new Uri($"{secrets.AzureOpenAiEndpoint.TrimEnd('/')}/openai/v1/"),
         Transport = new HttpClientPipelineTransport(httpClient)
     });
 
-await Execute(azureOpenAIClient.GetResponsesClient());
+await Execute(client.GetResponsesClient());
 #endregion
 
 #region Microsoft Foundry

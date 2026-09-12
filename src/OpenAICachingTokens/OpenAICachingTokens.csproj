@@ -17,7 +17,6 @@
     </Content>
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.AI.OpenAI" />
 		<PackageReference Include="Microsoft.Agents.AI.OpenAI" />
 		<PackageReference Include="JetBrains.Annotations" />
 	</ItemGroup>

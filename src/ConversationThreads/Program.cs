@@ -2,7 +2,7 @@
 // ReSharper disable HeuristicUnreachableCode
 
 #pragma warning disable CS0162 // Unreachable code detected
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using OpenAI;
 using Shared;
@@ -14,7 +14,7 @@ using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent agent = client
     .GetChatClient("gpt-4.1")

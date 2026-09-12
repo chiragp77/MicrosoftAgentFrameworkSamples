@@ -1,9 +1,9 @@
-﻿using System.ClientModel;
-using Azure.AI.OpenAI;
+﻿using CommunityToolkit.VectorData.SqliteVec;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
-using CommunityToolkit.VectorData.SqliteVec;
+using OpenAI;
 using Shared;
+using System.ClientModel;
 
 List<KnowledgeBaseEntry> knowledgeBaseDataToAddToVectorData =
 [
@@ -21,7 +21,7 @@ List<KnowledgeBaseEntry> knowledgeBaseDataToAddToVectorData =
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = client
     .GetEmbeddingClient("text-embedding-3-small")

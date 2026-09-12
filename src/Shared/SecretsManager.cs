@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Extensions.Configuration;
 using System.ClientModel;
 using System.ClientModel.Primitives;

@@ -1,12 +1,13 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using OpenAI.Chat;
 using Shared;
 using StructuredOutput.Models;
 using System.ClientModel;
+using OpenAI;
 
 Utils.Init("Structured Output");
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 const string question = "What are the top 10 Movies according to IMDB?";
 const string instructions = "You are an expert in IMDB Lists";

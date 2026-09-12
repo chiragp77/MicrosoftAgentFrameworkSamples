@@ -3,7 +3,7 @@
 
 #pragma warning disable OPENAI001
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +19,7 @@ using OpenTelemetry.Trace;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent noSettingAgent = client.GetChatClient("gpt-4.1").AsAIAgent();
 

@@ -1,9 +1,10 @@
 //WARNING: This is a playground area for the creator of the Repo to test and tinker. Nothing in this project is as such educational and might not even execute properly
 #pragma warning disable OPENAI002
 using System.ClientModel;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using OpenAI.Responses;
 using Playground.Tools;
@@ -16,7 +17,7 @@ Utils.Init("Playground");
 Secrets secrets = SecretsManager.GetSecrets();
 
 
-AzureOpenAIClient azureOpenAIClient = new AzureOpenAIClient(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient azureOpenAIClient = ClientHelper.GetAzureOpenAIClient();
 
 string model = "gpt-5.6-sol";
 string question = "What is the Weather like in Paris?";
@@ -58,7 +59,7 @@ AgentResponse responsesApiAgentResponse = await responsesApiAgent.RunAsync(quest
 
 AgentBuilderTool agentBuilderTool = new AgentBuilderTool();
 
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 AIAgent agent = client
     .GetResponsesClient()

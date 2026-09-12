@@ -1,14 +1,15 @@
-﻿using Azure.AI.OpenAI;
-using Microsoft.Agents.AI;
-using Microsoft.Extensions.AI;
-using OpenAI.Chat;
-using Shared;
-using Shared.Extensions;
-using System.ClientModel;
+﻿
 using AgentFrameworkToolkit;
 using AgentFrameworkToolkit.AzureOpenAI;
 using AgentFrameworkToolkit.OpenAI;
+using Microsoft.Agents.AI;
+using Microsoft.Extensions.AI;
+using OpenAI;
+using OpenAI.Chat;
 using OpenAI.Responses;
+using Shared;
+using Shared.Extensions;
+using System.ClientModel;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 #pragma warning disable OPENAI001
@@ -50,8 +51,8 @@ return;
 
 async Task Baseline()
 {
-    AzureOpenAIClient azureOpenAiClient = new(new Uri(endpoint), new ApiKeyCredential(apiKey));
-    ChatClientAgent agent = azureOpenAiClient
+    OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+    ChatClientAgent agent = client
         .GetChatClient("gpt-5-mini")
         .AsAIAgent();
     AgentResponse response = await agent.RunAsync(question);
@@ -61,8 +62,8 @@ async Task Baseline()
 
 async Task RawChatClient()
 {
-    AzureOpenAIClient azureOpenAiClient = new(new Uri(endpoint), new ApiKeyCredential(apiKey));
-    ChatClientAgent agent = azureOpenAiClient
+    OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+    ChatClientAgent agent = client
         .GetChatClient("gpt-5-mini")
         .AsAIAgent(
             options: new ChatClientAgentOptions
@@ -84,8 +85,8 @@ async Task RawChatClient()
 
 async Task RawResponsesApi()
 {
-    AzureOpenAIClient azureOpenAiClient = new(new Uri(endpoint), new ApiKeyCredential(apiKey));
-    ChatClientAgent agent = azureOpenAiClient
+    OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+    ChatClientAgent agent = client
         .GetResponsesClient()
         .AsAIAgent(
             model: "gpt-5-mini",

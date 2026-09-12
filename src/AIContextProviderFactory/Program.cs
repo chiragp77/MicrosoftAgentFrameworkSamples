@@ -1,9 +1,10 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Shared;
 using System.ClientModel;
 using JetBrains.Annotations;
+using OpenAI;
 using OpenAI.Chat;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
@@ -12,7 +13,7 @@ Secrets secrets = SecretsManager.GetSecrets();
 
 string userId = "rwj1234";
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent memoryExtractorAgent = client
     .GetChatClient("gpt-4.1-nano")

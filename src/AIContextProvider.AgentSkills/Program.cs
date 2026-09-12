@@ -1,13 +1,14 @@
 ﻿using AgentSkills;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 
 #pragma warning disable MAAI001
 Utils.Init("AI Context Provider (AgentSkills)");
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient(showRawCall: true);
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient(showRawCall: true);
 
 string skillPath = "TestData\\AgentSkills";
 

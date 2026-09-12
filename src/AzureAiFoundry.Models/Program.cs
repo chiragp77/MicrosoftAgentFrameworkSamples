@@ -2,7 +2,7 @@
 
 using Azure;
 using Azure.AI.Agents.Persistent;
-using Azure.AI.OpenAI;
+
 using Azure.Identity;
 using Microsoft.Agents.AI;
 using OpenAI;
@@ -22,7 +22,7 @@ await CreateAndCallFoundryAgent("DeepSeek-R1-0528", questionToAsk); //This does 
 
 async Task CreateAndCallNormalClientAgent(string model, string question)
 {
-    AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+    OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
     ChatClientAgent agent = client
         .GetChatClient(model)

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 
@@ -12,7 +13,7 @@ public class AgentBuilderTool
     {
         Utils.Green($"Sub-agent '{agentName}': Instructions: '{systemInstructions}' - Prompt: '{prompt}'");
 
-        AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
         ChatClientAgent agent = client.GetChatClient("gpt-4.1-mini").AsAIAgent(instructions: systemInstructions);
         return (await agent.RunAsync(prompt)).ToString();
     }

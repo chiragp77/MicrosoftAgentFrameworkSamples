@@ -1,6 +1,6 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/VInKZ45YKAM
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
@@ -14,7 +14,7 @@ using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent intentAgent = client.GetChatClient("gpt-4.1-mini").AsAIAgent(name: "IntentAgent", instructions: "Determine what type of question was asked. Never answer yourself");
 

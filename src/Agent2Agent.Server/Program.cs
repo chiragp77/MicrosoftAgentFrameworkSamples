@@ -3,7 +3,7 @@
 using A2A;
 using A2A.AspNetCore;
 using Agent2Agent.Server;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.AI;
@@ -12,12 +12,13 @@ using System.ClientModel;
 using System.Reflection;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using OpenAI;
 using OpenAI.Chat;
 using AgentSkill = A2A.AgentSkill;
 
 //Start with Business as Usual
 Utils.Init("A2A Server");
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 FileSystemTools target = new();
 MethodInfo[] methods = typeof(FileSystemTools).GetMethods(BindingFlags.Public | BindingFlags.Instance);

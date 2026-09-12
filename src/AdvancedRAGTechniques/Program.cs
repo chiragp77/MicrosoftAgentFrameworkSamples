@@ -1,17 +1,16 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/0Lt1rmOEZNs
 
 using AdvancedRAGTechniques;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.AI;
 using CommunityToolkit.VectorData.SqlServer;
+using Microsoft.Extensions.AI;
+using OpenAI;
 using Shared;
 using System.ClientModel;
 using System.Text.Json;
 using UsingRAGInAgentFramework.Models;
 
 Utils.Init("Advanced RAG Techniques");
-(Uri endpoint, ApiKeyCredential apiKey) = SecretsManager.GetAzureOpenAICredentials(false);
-AzureOpenAIClient client = new(endpoint, apiKey);
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 //Prep + Embedding
 string jsonWithMovies = await File.ReadAllTextAsync("made_up_movies.json");

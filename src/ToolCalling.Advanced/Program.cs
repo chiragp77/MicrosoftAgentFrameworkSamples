@@ -4,7 +4,7 @@
 //- MCP: https://youtu.be/Y5IKdt9vdJM
 
 #pragma warning disable MEAI001
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -18,7 +18,7 @@ using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 //Get tools via reflection
 FileSystemTools target = new();

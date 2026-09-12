@@ -1,6 +1,6 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/ghND74Hj6Fs
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using OpenAI;
 using Shared;
@@ -10,7 +10,7 @@ using Shared.Extensions;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent agent = client
     .GetChatClient("gpt-5-mini")

@@ -1,16 +1,17 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/Gr3S1Q9eZrc
 
-using Azure.AI.OpenAI;
+
+using LifeOfAnLLMCall;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
+using OpenAI.Chat;
 using Shared;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.ComponentModel;
+using System.Net;
 using System.Text.Json;
-using LifeOfAnLLMCall;
-using OpenAI.Chat;
 
 Console.Clear();
 using CustomClientHttpHandler handler = new CustomClientHttpHandler();
@@ -18,9 +19,11 @@ using HttpClient httpClient = new HttpClient(handler);
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey), new AzureOpenAIClientOptions
+OpenAIClient client = new(new ApiKeyCredential(secrets.AzureOpenAiKey), new OpenAIClientOptions
 {
+    Endpoint = new Uri($"{secrets.AzureOpenAiEndpoint.TrimEnd('/')}/openai/v1/"),
     Transport = new HttpClientPipelineTransport(httpClient)
+    
 });
 
 

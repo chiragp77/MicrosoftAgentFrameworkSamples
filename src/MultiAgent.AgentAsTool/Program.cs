@@ -1,6 +1,6 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/wL4V78s_wI4
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using MultiAgent.AgentAsTool;
@@ -13,7 +13,7 @@ using OpenAI.Chat;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 AIAgent stringAgent = client
     .GetChatClient("gpt-4.1")

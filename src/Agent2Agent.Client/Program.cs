@@ -1,7 +1,7 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/g72ks3rY9qQ
 
 using A2A;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Shared;
 using System.ClientModel;
@@ -21,7 +21,7 @@ Utils.Separator();
 
 Utils.Gray("Ready for questions");
 
-AzureOpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent agent = client
     .GetChatClient("gpt-4.1")

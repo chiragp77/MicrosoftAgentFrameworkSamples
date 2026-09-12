@@ -1,15 +1,16 @@
-using Azure.AI.OpenAI;
+
+using AgentUserInteraction.Advanced.Server.AgUiSpecializedAgents;
+using AgentUserInteraction.Advanced.SharedModels;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hosting.AGUI.AspNetCore;
 using Microsoft.Extensions.AI;
+using OpenAI;
+using OpenAI.Chat;
 using Shared;
 using System.ClientModel;
-using AgentUserInteraction.Advanced.Server.AgUiSpecializedAgents;
-using AgentUserInteraction.Advanced.SharedModels;
-using OpenAI.Chat;
 
 Secrets secrets = SecretsManager.GetSecrets();
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 string model = "gpt-4.1-mini";
 

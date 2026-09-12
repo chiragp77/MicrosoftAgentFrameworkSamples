@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -12,9 +12,9 @@ namespace The_Trello_Experiment;
 
 public static class Take2CSharpCodeRunner
 {
-    public static async Task Run(AzureOpenAIClient azureOpenAIClient, string trelloApiKey, string trelloToken)
+    public static async Task Run(OpenAIClient OpenAIClient, string trelloApiKey, string trelloToken)
     {
-        ChatClientAgent agent = azureOpenAIClient
+        ChatClientAgent agent = OpenAIClient
             .GetResponsesClient()
             .AsAIAgent(
                 model: "gpt-4.1-mini",

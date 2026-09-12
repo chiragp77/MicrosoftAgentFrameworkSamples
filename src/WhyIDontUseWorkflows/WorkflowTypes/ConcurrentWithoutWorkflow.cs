@@ -1,9 +1,9 @@
-﻿using System.ClientModel;
-using Azure.AI.OpenAI;
-using Microsoft.Agents.AI;
+﻿using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
+using System.ClientModel;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 namespace WhyIDontUseWorkflows.WorkflowTypes;
@@ -12,9 +12,7 @@ public static class ConcurrentWithoutWorkflow
 {
     public static async Task Run()
     {
-        Secrets secrets = SecretsManager.GetSecrets();
-
-        AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
         ChatClient chatClient = client.GetChatClient("gpt-4.1");
 

@@ -1,13 +1,14 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 using System.ClientModel;
 
 Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 ChatClient chatClient = client.GetChatClient("gpt-4.1");
 ChatClientAgent agent = chatClient.AsAIAgent(instructions: "You are the judge in a guessing game where it is about guessing animals. " +
                                                            "Each hint should only give one fact");

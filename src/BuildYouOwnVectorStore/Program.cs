@@ -1,13 +1,13 @@
-﻿using System.ClientModel;
-using System.Text;
-using Azure.AI.OpenAI;
-using BuildYourOwnVectorStore;
+﻿using BuildYourOwnVectorStore;
 using BuildYourOwnVectorStore.VectorStoreImplementation;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
+using OpenAI;
 using OpenAI.Responses;
 using Shared;
+using System.ClientModel;
+using System.Text;
 #pragma warning disable OPENAI001
 
 Console.WriteLine("Hello, World!");
@@ -27,7 +27,7 @@ List<MyDataEntry> data =
 ];
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = client
     .GetEmbeddingClient("text-embedding-3-small")

@@ -1,6 +1,6 @@
 //YouTube video that cover this sample: https://youtu.be/JgV241C-vdk
 
-using Azure.AI.OpenAI;
+
 using Azure.Monitor.OpenTelemetry.Exporter;
 using Microsoft.Agents.AI;
 using Microsoft.AspNetCore.Builder;
@@ -32,7 +32,7 @@ public static class Extensions
     {
         /* ADDED FOR SAMPLE - BEGIN */
         global::Shared.Secrets secrets = SecretsManager.GetSecrets();
-        AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
         AIAgent agent = client
             .GetChatClient("gpt-4.1")

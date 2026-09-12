@@ -1,9 +1,10 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Text;
+using OpenAI;
 using OpenAI.Responses;
 using Shared;
 #pragma warning disable OPENAI001
@@ -19,10 +20,7 @@ public class Skills
         
         Secrets secrets = SecretsManager.GetSecrets();
 
-        AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey),new AzureOpenAIClientOptions
-        {
-            //Transport = new HttpClientPipelineTransport(httpClient)
-        });
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient(false); //set to true to see raw calls
 
         AgentSkillsProvider agentSkillsProvider = new("TestData\\AgentSkills", options: new AgentSkillsProviderOptions
         {

@@ -1,8 +1,9 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/BNB7zO3Uqwc
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 using StructuredOutput.Models;
@@ -12,9 +13,7 @@ using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using ChatResponseFormat = Microsoft.Extensions.AI.ChatResponseFormat;
 
-Secrets secrets = SecretsManager.GetSecrets();
-
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 string question = "What are the top 10 Movies according to IMDB?";
 

@@ -1,16 +1,17 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/Vpi5aZJRJmA
 
-using Azure.AI.OpenAI;
+
+using CommunityToolkit.VectorData.InMemory;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 using Shared.Extensions;
 using System.ClientModel;
 using System.Text;
 using System.Text.Json;
-using CommunityToolkit.VectorData.InMemory;
 using UsingRAGInAgentFramework.Models;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
@@ -20,8 +21,7 @@ Movie[] movieDataForRag = JsonSerializer.Deserialize<Movie[]>(jsonWithMovies)!;
 
 ChatMessage question = new(ChatRole.User, "What is the 3 highest rated adventure movies (list their titles, plots and ratings)");
 
-Secrets secrets = SecretsManager.GetSecrets();
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent agent = client
     .GetChatClient("gpt-4.1")

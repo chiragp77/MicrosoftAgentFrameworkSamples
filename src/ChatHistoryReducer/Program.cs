@@ -1,12 +1,13 @@
 ﻿//Video related to this sample: https://youtu.be/a-7wyjpf5qQ
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
-using Shared;
-using System.ClientModel;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
+using Shared;
 using Shared.Extensions;
+using System.ClientModel;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 #pragma warning disable MEAI001
@@ -14,7 +15,7 @@ using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 ChatClient chatClient = client.GetChatClient("gpt-4.1");
 
 IChatReducer chatReducer = new MessageCountingChatReducer(targetCount: 4);

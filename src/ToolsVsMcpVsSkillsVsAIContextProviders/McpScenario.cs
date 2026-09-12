@@ -1,12 +1,13 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
+using OpenAI;
+using OpenAI.Responses;
 using Shared;
+using Shared.Extensions;
 using System.ClientModel;
 using System.Text;
-using OpenAI.Responses;
-using Shared.Extensions;
 
 #pragma warning disable OPENAI001
 
@@ -18,7 +19,7 @@ public class McpScenario
     {
         Secrets secrets = SecretsManager.GetSecrets();
 
-        AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+        OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
         await using McpClient gitHubMcpClient = await McpClient.CreateAsync(new HttpClientTransport(new HttpClientTransportOptions
         {

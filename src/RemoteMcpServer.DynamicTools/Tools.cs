@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using ModelContextProtocol.Server;
 

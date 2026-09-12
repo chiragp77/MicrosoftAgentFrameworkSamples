@@ -8,7 +8,6 @@
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AgentFrameworkToolkit.AzureOpenAI" />
-		<PackageReference Include="Azure.AI.OpenAI" />
 		<PackageReference Include="Microsoft.Agents.AI.OpenAI" />
 	</ItemGroup>
 	<ItemGroup>

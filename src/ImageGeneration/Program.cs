@@ -4,14 +4,14 @@
 using OpenAI.Images;
 using Shared;
 using System.ClientModel;
-using Azure.AI.OpenAI;
+
 using OpenAI;
 
 #pragma warning disable OPENAI001
 
 Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 //OpenAIClient client = new(secrets.OpenAiApiKey);
 
 ImageClient imageClient = client.GetImageClient("gpt-image-1");

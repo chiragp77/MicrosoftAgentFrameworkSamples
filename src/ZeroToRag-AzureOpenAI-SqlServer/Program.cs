@@ -2,12 +2,13 @@
 
 using System.ClientModel;
 using System.Text;
-using Azure.AI.OpenAI;
+
 using CommunityToolkit.VectorData.InMemory;
 using CommunityToolkit.VectorData.SqlServer;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
+using OpenAI;
 using OpenAI.Responses;
 #pragma warning disable OPENAI001
 
@@ -47,7 +48,10 @@ string sqlServerConnectionString = "";
 
 #region Step 4: Create you Embedding Generator
 
-AzureOpenAIClient client = new AzureOpenAIClient(new Uri(azureEndpoint), new ApiKeyCredential(azureApiKey));
+OpenAIClient client = new OpenAIClient(new ApiKeyCredential(azureApiKey), new OpenAIClientOptions
+{
+    Endpoint = new Uri($"{azureEndpoint.TrimEnd('/')}/openai/v1/"),
+});
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = client
     .GetEmbeddingClient(embeddingModelDeploymentName)
     .AsIEmbeddingGenerator();

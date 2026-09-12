@@ -1,6 +1,6 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/6sM6nTk_UBs
 
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Shared;
 using System.ClientModel;
@@ -14,7 +14,7 @@ Console.Clear();
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 AIAgent agent = client
     .GetResponsesClient()

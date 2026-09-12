@@ -1,6 +1,6 @@
 ﻿using System.ClientModel;
 using System.Text.Json;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -11,7 +11,7 @@ using UseToonToSaveTokens;
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 string json = await File.ReadAllTextAsync("famous_people.json");
 List<FamousPerson> list = JsonSerializer.Deserialize<List<FamousPerson>>(json)!;

@@ -1,7 +1,7 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/pqLWICXRtyA
 
 #pragma warning disable OPENAI001
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Shared;
 using System.ClientModel;
@@ -12,7 +12,7 @@ using Shared.Extensions;
 Secrets secrets = SecretsManager.GetSecrets();
 Console.Clear();
 //OpenAIClient client = new(secrets.OpenAiApiKey);
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 AIAgent agent = client
     .GetResponsesClient()

@@ -1,4 +1,5 @@
-﻿using Azure.AI.OpenAI;
+﻿
+using OpenAI;
 using Shared;
 using System.ClientModel;
 using The_Trello_Experiment;
@@ -6,10 +7,7 @@ using The_Trello_Experiment;
 Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient azureOpenAIClient = new AzureOpenAIClient(
-    new Uri(secrets.AzureOpenAiEndpoint),
-    new ApiKeyCredential(secrets.AzureOpenAiKey));
-
-//await Take1OpenAICodeInterpreter.Run(azureOpenAIClient, secrets.TrelloApiKey, secrets.TrelloToken);
-//await Take2CSharpCodeRunner.Run(azureOpenAIClient, secrets.TrelloApiKey, secrets.TrelloToken);
-await Take3TheSensibleChoice.Run(azureOpenAIClient, secrets.TrelloApiKey, secrets.TrelloToken);
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+//await Take1OpenAICodeInterpreter.Run(client, secrets.TrelloApiKey, secrets.TrelloToken);
+//await Take2CSharpCodeRunner.Run(client, secrets.TrelloApiKey, secrets.TrelloToken);
+await Take3TheSensibleChoice.Run(client, secrets.TrelloApiKey, secrets.TrelloToken);

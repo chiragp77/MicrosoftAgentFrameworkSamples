@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using CommunityToolkit.VectorData.InMemory;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
@@ -6,6 +6,7 @@ using Shared;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Diagnostics;
+using OpenAI;
 
 Utils.Init("Vector Store Deltas");
 
@@ -13,8 +14,9 @@ Secrets secrets = SecretsManager.GetSecrets();
 using CustomClientHttpHandler handler = new();
 using HttpClient httpClient = new(handler);
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey), new AzureOpenAIClientOptions
+OpenAIClient client = new(new ApiKeyCredential(secrets.AzureOpenAiKey), new OpenAIClientOptions
 {
+    Endpoint = new Uri($"{secrets.AzureOpenAiEndpoint.TrimEnd('/')}/openai/v1/"),
     Transport = new HttpClientPipelineTransport(httpClient)
 });
 

@@ -1,13 +1,13 @@
 ﻿using AgentFrameworkToolkit.Tools.Common;
-using Azure.AI.OpenAI;
+using JetBrains.Annotations;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using Shared;
 using Shared.Extensions;
 using System.ClientModel;
 using System.Text;
-using JetBrains.Annotations;
 using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 Console.Clear();
@@ -44,7 +44,7 @@ async Task NormalAgentWithTools()
         PreferredUnits = WeatherOptionsUnits.Metric
     }));
 
-    AzureOpenAIClient client = new AzureOpenAIClient(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+    OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
     AIAgent mainAgent = client.GetChatClient("gpt-4.1").AsAIAgent(tools: tools).AsBuilder().Use(FunctionCallMiddleware).Build();
 
     Utils.Gray($"This agent have: {tools.Count} tools");
@@ -66,8 +66,8 @@ async Task NormalAgentWithTools()
 
 async Task ToolInjection()
 {
-    AzureOpenAIClient client = new AzureOpenAIClient(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
-    
+    OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+
     ChatClientAgent toolInjectionAgent = client.GetChatClient("gpt-4.1-nano").AsAIAgent(
         instructions: "You job is to tell if any given message is a request to use specific tools"
     );

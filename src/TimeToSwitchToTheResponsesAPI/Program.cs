@@ -1,19 +1,19 @@
-﻿using System.ClientModel;
-using AgentFrameworkToolkit.AzureOpenAI;
+﻿using AgentFrameworkToolkit.AzureOpenAI;
 using AgentFrameworkToolkit.OpenAI;
-using Azure.AI.OpenAI;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using OpenAI;
 using OpenAI.Chat;
 using OpenAI.Responses;
 using Shared;
+using System.ClientModel;
 #pragma warning disable OPENAI001 //https://github.com/openai/openai-dotnet/issues/1130
 
 Utils.Init("It is Time to Switch to OpenAI Responses API");
 
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 AzureOpenAIAgentFactory azureOpenAIAgentFactory = new(new AzureOpenAIConnection
 {

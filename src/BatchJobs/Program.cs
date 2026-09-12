@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Azure.AI.OpenAI;
+
 using OpenAI;
 
 #pragma warning disable OPENAI001
@@ -16,7 +16,7 @@ Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
 
 OpenAIClient client = new(secrets.OpenAiApiKey);
-//AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+//OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 OpenAIFileClient fileClient = client.GetOpenAIFileClient();
 BatchClient batchClient = client.GetBatchClient();
 

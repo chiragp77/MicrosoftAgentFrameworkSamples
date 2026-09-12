@@ -1,4 +1,4 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using NAudio.Wave;
 using OpenAI.Audio;
 using Shared;
@@ -10,10 +10,10 @@ using OpenAI.Chat;
 Console.Clear();
 Secrets secrets = SecretsManager.GetSecrets();
 
-AzureOpenAIClient azureOpenAIClient = new AzureOpenAIClient(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
-AudioClient audioClient = azureOpenAIClient.GetAudioClient("whisper");
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
+AudioClient audioClient = client.GetAudioClient("whisper");
 
-ChatClientAgent agent = azureOpenAIClient
+ChatClientAgent agent = client
     .GetChatClient("gpt-4.1")
     .AsAIAgent(instructions: "You are a Friendly AI Bot, answering questions");
 

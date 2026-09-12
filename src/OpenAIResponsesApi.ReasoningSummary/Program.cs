@@ -1,7 +1,7 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/4D02zSl4QAQ
 
 using System.ClientModel;
-using Azure.AI.OpenAI;
+
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OpenAI;
@@ -12,7 +12,7 @@ using Shared;
 Secrets secrets = SecretsManager.GetSecrets();
 
 //OpenAIClient client = new(secrets.OpenAiApiKey);
-AzureOpenAIClient client = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 ChatClientAgent agent = client
     .GetResponsesClient()

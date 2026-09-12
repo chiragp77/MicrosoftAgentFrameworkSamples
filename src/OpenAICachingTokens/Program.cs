@@ -1,16 +1,13 @@
-﻿using Azure.AI.OpenAI;
+﻿
 using Microsoft.Agents.AI;
+using OpenAI;
+using OpenAI.Chat;
 using Shared;
 using System.ClientModel;
-using OpenAI.Chat;
 
 Console.Clear();
 
-Secrets secrets = SecretsManager.GetSecrets();
-
-AzureOpenAIClient client = new(
-    new Uri(secrets.AzureOpenAiEndpoint),
-    new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient client = ClientHelper.GetAzureOpenAIClient();
 
 string text = "2+2 = 4, 10*10 = 100";
 text = File.ReadAllText("Book.txt");

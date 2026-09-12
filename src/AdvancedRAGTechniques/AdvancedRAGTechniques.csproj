@@ -13,7 +13,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.AI.OpenAI" />
 		<PackageReference Include="CommunityToolkit.VectorData.SqlServer" />
 		<PackageReference Include="Microsoft.Agents.AI.OpenAI" />
 	</ItemGroup>

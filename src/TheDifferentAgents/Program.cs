@@ -1,7 +1,7 @@
 ﻿//YouTube video that cover this sample: https://youtu.be/pN-WV5FD_-Y
 
 using Azure.AI.Agents.Persistent;
-using Azure.AI.OpenAI;
+
 using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
@@ -17,9 +17,9 @@ using OpenAI.Responses;
 Secrets secrets = SecretsManager.GetSecrets();
 string model = "gpt-4.1";
 
-//The Raw client (OpenAIClient and AzureOpenAIClient works that same)
+//The Raw client (OpenAIClient and OpenAIClient works that same)
 OpenAIClient rawOpenAiClient = new(secrets.OpenAiApiKey);
-AzureOpenAIClient rawAzureOpenAiClient = new(new Uri(secrets.AzureOpenAiEndpoint), new ApiKeyCredential(secrets.AzureOpenAiKey));
+OpenAIClient rawAzureOpenAIClient = ClientHelper.GetAzureOpenAIClient();
 
 //--------------------------------------------------------------------------
 

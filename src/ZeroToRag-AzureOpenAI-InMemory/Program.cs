@@ -2,11 +2,12 @@
 
 using System.ClientModel;
 using System.Text;
-using Azure.AI.OpenAI;
+
 using CommunityToolkit.VectorData.InMemory;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
+using OpenAI;
 using OpenAI.Responses;
 
 List<MyDataEntry> data =
@@ -43,7 +44,10 @@ string llmModelDeploymentName = "";
 
 #region Step 4: Create you Embedding Generator
 
-AzureOpenAIClient client = new AzureOpenAIClient(new Uri(azureEndpoint), new ApiKeyCredential(azureApiKey));
+OpenAIClient client = new OpenAIClient(new ApiKeyCredential(azureApiKey), new OpenAIClientOptions
+{
+    Endpoint = new Uri($"{azureEndpoint.TrimEnd('/')}/openai/v1/"),
+});
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = client
     .GetEmbeddingClient(embeddingModelDeploymentName)
     .AsIEmbeddingGenerator();
