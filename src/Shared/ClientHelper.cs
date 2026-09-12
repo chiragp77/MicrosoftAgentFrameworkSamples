@@ -3,7 +3,6 @@ using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Text.Json;
 using OpenAI;
-using static Shared.Utils;
 
 namespace Shared;
 
@@ -39,7 +38,6 @@ public static class ClientHelper
             Endpoint = endpoint,
             Transport = new HttpClientPipelineTransport(new HttpClient(new CustomClientHttpHandler(rawCall ?? new RawCallOptions())))
         });
-
     }
 
     public static AzureOpenAIClient GetAzureOpenAIClient(bool showRawCall = false, RawCallOptions? rawCall = null)
