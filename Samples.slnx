@@ -29,6 +29,7 @@
     <Project Path="src/AIContextProvider.Mem0/AIContextProvider.Mem0.csproj" Id="c2c3258b-e4a8-4fcb-aaf5-1e1d9c37567d" />
     <Project Path="src/AIContextProviderFactory/AIContextProvider.Memory.csproj" Id="5100b6b0-ce98-4a6a-bdc9-3541771b28f1" />
     <Project Path="src/AIContextProviders/AIContextProviders.DeepDive.csproj" Id="11ef1ae1-2a32-4e60-830c-ba6bba9db460" />
+    <Project Path="src/InMemorySkills/AIContextProviders.InlineSkills.csproj" Id="6cf73b7a-5b07-4686-86a6-fa3ae85ca791" />
     <Project Path="src/ToolCalling.OnTheFlyToolCallInjection/ToolCalling.OnTheFlyToolCallInjection.csproj" Id="6143c203-a20e-4034-a76a-9d3cc82a5075" />
   </Folder>
   <Folder Name="/Audio/">
