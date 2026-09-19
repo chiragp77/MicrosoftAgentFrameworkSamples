@@ -9,6 +9,7 @@ public record Secrets(
     string BingApiKey,
     string GitHubPatToken,
     string HuggingFaceApiKey,
+    string TypeSafeApiKey,
     string OpenRouterApiKey,
     string ApplicationInsightsConnectionString,
     string GoogleGeminiApiKey,
