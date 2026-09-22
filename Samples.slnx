@@ -95,6 +95,7 @@
     <Project Path="src/DependencyInjection/DependencyInjection.csproj" />
     <Project Path="src/DoItYourselfAiCalling/DoItYourselfAiCalling.csproj" Id="13b64427-4c39-465c-9754-e98c7ef1c812" />
     <Project Path="src/JevClassification/JevClassification.csproj" />
+    <Project Path="src/JevDotNet/JevDotNetNuget.csproj" Id="dd225720-e4ce-487c-bd35-acee9ab35e49" />
     <Project Path="src/LifeOfAnLLMCall/LifeOfAnLLMCall.csproj" Id="9f72e70c-6171-4a9c-87f3-f888518c4a43" />
     <Project Path="src/NewOfficialGoogleNuget/NewOfficialGoogleNuget.csproj" />
     <Project Path="src/OpenAICachingTokens/OpenAICachingTokens.csproj" Id="eba2d4ee-af58-4670-aa78-64ab92ca8e13" />
