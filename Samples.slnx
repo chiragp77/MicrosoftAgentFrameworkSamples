@@ -192,15 +192,18 @@
     <Project Path="src/ZeroToFirstAgent.Olaama/ZeroToFirstAgent.Olaama.csproj" Id="fbb6b3d1-1aed-4fec-9632-a99def054b8e" />
   </Folder>
   <Folder Name="/ZeroToFirstAgent/OpenAI Based/">
-    <Project Path="src/ZeroToFirstAgent.AzureAiFoundry/ZeroToFirstAgent.AzureAiFoundry.csproj" Id="b0b3dda9-e6f6-4fbd-baf0-c2148dbf91a0" />
     <Project Path="src/ZeroToFirstAgent.AzureOpenAi/ZeroToFirstAgent.AzureOpenAi.csproj" Id="a1a05c9d-690d-4055-b666-8546e7d876a8" />
     <Project Path="src/ZeroToFirstAgent.Cerebras/ZeroToFirstAgent.Cerebras.csproj" Id="4c105ab4-cc61-4fe4-b6d7-d4189bea53fb" />
     <Project Path="src/ZeroToFirstAgent.Cohere/ZeroToFirstAgent.Cohere.csproj" Id="c4d3111b-9f57-4554-b9de-ff7e7730a6b1" />
     <Project Path="src/ZeroToFirstAgent.Groq/ZeroToFirstAgent.Groq.csproj" Id="f82ad151-3222-4967-985a-a19d0e83c592" />
     <Project Path="src/ZeroToFirstAgent.HuggingFace/ZeroToFirstAgent.HuggingFace.csproj" Id="0fb97834-4dc6-4742-92d7-f7a362ccdca0" />
+    <Project Path="src/ZeroToFirstAgent.MicrosoftFoundry/ZeroToFirstAgent.MicrosoftFoundry.csproj" Id="23945a6c-de93-40f8-a312-53f1bb1e3422" />
     <Project Path="src/ZeroToFirstAgent.OpenAi/ZeroToFirstAgent.OpenAi.csproj" Id="c2901cc3-40cc-4ef7-a3a2-b082e855ea6a" />
     <Project Path="src/ZeroToFirstAgent.OpenRouter/ZeroToFirstAgent.OpenRouter.csproj" Id="71ba75bf-7aef-4168-b31e-c2ccdbfbb8ed" />
     <Project Path="src/ZeroToFirstAgent.XAIGrok/ZeroToFirstAgent.XAIGrok.csproj" Id="d55d6ced-850d-4fb7-b729-a953ca1b70b0" />
+  </Folder>
+  <Folder Name="/ZeroToFirstAgent/OpenAI Based/Legacy/">
+    <Project Path="src/ZeroToFirstAgent.AzureAiFoundry/ZeroToFirstAgent.AzureAiFoundry.csproj" Id="b0b3dda9-e6f6-4fbd-baf0-c2148dbf91a0" />
   </Folder>
   <Folder Name="/ZeroToFirstAgent/OpenAI Based/Offline/">
     <Project Path="src/ZeroToFirstAgent.FoundryLocal/ZeroToFirstAgent.FoundryLocal.csproj" Id="420ee7f5-fa0f-4303-a68c-630ede8086e4" />
