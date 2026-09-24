@@ -1,13 +1,13 @@
 ﻿using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
-using Microsoft.Agents.AI.AzureAI;
 using Microsoft.Extensions.AI;
 using OpenAI.Containers;
 using OpenAI.Responses;
 using Shared;
 using System.ClientModel;
 using Azure.AI.Projects.Agents;
+using Microsoft.Agents.AI.Foundry;
 
 #pragma warning disable OPENAI001
 
@@ -43,7 +43,7 @@ AIFunction localTool = AIFunctionFactory.Create(GetWeather);
 //Step 1: Create/Update Agent if it does not exist
 try
 {
-    ClientResult<AgentRecord> clientResult = await client.Agents.GetAgentAsync(agentName: myAgentName);
+    ClientResult<ProjectsAgentRecord> clientResult = await client.AgentAdministrationClient.GetAgentAsync(agentName: myAgentName);
 
     //Let's ensure Agent is as we have defined by making a new version (if definition is the same nothing will happen)
     //await CreateAgent(myInstructions);
@@ -85,7 +85,7 @@ FoundryAgent agentV2 = client.AsAIAgent(myAgentName, tools: [localTool]);
 response = await agentV2.RunAsync("Hi there");
 Console.WriteLine(response);
 
-AgentVersion agentV1 = (await client.Agents.GetAgentVersionAsync(myAgentName, "1")).Value;
+ProjectsAgentVersion agentV1 = (await client.AgentAdministrationClient.GetAgentVersionAsync(myAgentName, "1")).Value;
 FoundryAgent agentByVersion = client.AsAIAgent(agentV1, tools: [localTool]);
 
 response = await agentByVersion.RunAsync("Hi Agent 1");
@@ -95,10 +95,10 @@ return;
 
 async Task CreateAgent(string instructions)
 {
-    await client.Agents.CreateAgentVersionAsync(
+    await client.AgentAdministrationClient.CreateAgentVersionAsync(
         agentName: myAgentName,
-        options: new AgentVersionCreationOptions(
-            new PromptAgentDefinition(modelDeploymentName)
+        options: new ProjectsAgentVersionCreationOptions(
+            new DeclarativeAgentDefinition(modelDeploymentName)
             {
                 Tools =
                 {
@@ -131,7 +131,7 @@ async Task GetAndLaunchCodeInterpreterGeneratedFile(AgentResponse agentResponse,
             {
                 if (annotation.RawRepresentation is ContainerFileCitationMessageAnnotation containerFileCitation)
                 {
-                    ContainerClient containerClient = aiProjectClient.OpenAI.GetContainerClient();
+                    ContainerClient containerClient = aiProjectClient.ProjectOpenAIClient.GetContainerClient();
                     ClientResult<BinaryData> fileContent = await containerClient.DownloadContainerFileAsync(containerFileCitation.ContainerId, containerFileCitation.FileId);
                     string path = Path.Combine(Path.GetTempPath(), containerFileCitation.Filename);
                     await File.WriteAllBytesAsync(path, fileContent.Value.ToArray());
